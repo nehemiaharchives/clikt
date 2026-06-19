@@ -85,7 +85,7 @@ internal object PowershellCompletionGenerator {
             val pattern = if (node.cmdKey.isEmpty()) "''" else "'${node.cmdKey}'"
             appendLine("            $pattern {")
             append("                return @(")
-            names.joinTo(this, " ") { "'${it.escSingleQuote}'" }
+            names.joinTo(this, ", ") { "'${it.escSingleQuote}'" }
             appendLine(")")
             appendLine("            }")
         }

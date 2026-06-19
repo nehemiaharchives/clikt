@@ -77,19 +77,20 @@ internal object PowershellCompletionGenerator {
         if (relevant.isEmpty()) return
 
         appendLine("    if (\$wordToComplete -match '^-') {")
-        appendLine("        switch -Wildcard (\$cmdKey) {")
+        appendLine("        \$opts = switch -Wildcard (\$cmdKey) {")
         for (node in relevant) {
             val opts = node.command._options.filterNot { it.hidden }
             val names = opts.flatMap { it.allNames }.filter { it.startsWith('-') }
             if (names.isEmpty()) continue
             val pattern = if (node.cmdKey.isEmpty()) "''" else "'${node.cmdKey}'"
             appendLine("            $pattern {")
-            append("                return @(")
-            names.joinTo(this, ", ") { "'${it.escSingleQuote}'" }
-            appendLine(")")
+            names.joinTo(this, "; ") { "'${it.escSingleQuote}'" }
+            appendLine("")
             appendLine("            }")
         }
-        appendLine("        } | Where-Object { \$_ -like \"\$wordToComplete*\" }")
+        appendLine("            default { }")
+        appendLine("        }")
+        appendLine("        return \$opts | Where-Object { \$_ -like \"\$wordToComplete*\" }")
         appendLine("    }")
     }
 

@@ -66,11 +66,12 @@ sealed class CompletionCandidates {
      * ```
      */
     data class Custom(val generator: (ShellType) -> String?) : CompletionCandidates() {
-        enum class ShellType { BASH, FISH }
+        enum class ShellType { BASH, FISH, POWERSHELL }
         companion object {
             fun fromStdout(command: String) = Custom {
                 when (it) {
                     ShellType.FISH -> "\"($command)\""
+                    ShellType.POWERSHELL -> "& $command | ForEach-Object { \$_ }"
                     else -> "COMPREPLY=(\$(compgen -W \"\$($command)\" -- \"\${COMP_WORDS[\$COMP_CWORD]}\"))"
                 }
             }

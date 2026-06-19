@@ -18,6 +18,8 @@ object CompletionGenerator {
                 zsh = true
             )
 
+            in setOf("powershell", "pwsh") -> PowershellCompletionGenerator.generatePowershellCompletion(command = command)
+
             else -> BashCompletionGenerator.generateBashOrZshCompletion(
                 command = command,
                 zsh = false

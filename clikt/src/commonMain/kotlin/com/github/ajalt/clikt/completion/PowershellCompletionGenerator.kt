@@ -33,7 +33,7 @@ internal object PowershellCompletionGenerator {
             appendLine("    \$commandPath = @()")
             appendLine("    for (\$i = 1; \$i -lt \$commandAst.CommandElements.Count; \$i++) {")
             appendLine("        \$e = \$commandAst.CommandElements[\$i]")
-            appendLine("        if (\$e -is [StringConstantExpressionAst] -and \$e.StringConstantType -eq [StringConstantType]::BareWord -and -not \$e.Value.StartsWith('-')) {")
+            appendLine("        if (\$e -is [System.Management.Automation.Language.StringConstantExpressionAst] -and \$e.StringConstantType -eq [System.Management.Automation.Language.StringConstantType]::BareWord -and -not \$e.Value.StartsWith('-')) {")
             appendLine("            \$commandPath += \$e.Value")
             appendLine("        }")
             appendLine("    }")

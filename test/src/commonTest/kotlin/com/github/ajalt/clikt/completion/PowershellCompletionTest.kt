@@ -17,7 +17,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |    ${'$'}commandPath = @()
         |    for (${'$'}i = 1; ${'$'}i -lt ${'$'}commandAst.CommandElements.Count; ${'$'}i++) {
         |        ${'$'}e = ${'$'}commandAst.CommandElements[${'$'}i]
-        |        if (${'$'}e -is [StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
+        |        if (${'$'}e -is [System.Management.Automation.Language.StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [System.Management.Automation.Language.StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
         |            ${'$'}commandPath += ${'$'}e.Value
         |        }
         |    }
@@ -119,7 +119,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |    ${'$'}commandPath = @()
         |    for (${'$'}i = 1; ${'$'}i -lt ${'$'}commandAst.CommandElements.Count; ${'$'}i++) {
         |        ${'$'}e = ${'$'}commandAst.CommandElements[${'$'}i]
-        |        if (${'$'}e -is [StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
+        |        if (${'$'}e -is [System.Management.Automation.Language.StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [System.Management.Automation.Language.StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
         |            ${'$'}commandPath += ${'$'}e.Value
         |        }
         |    }
@@ -183,7 +183,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |    ${'$'}commandPath = @()
         |    for (${'$'}i = 1; ${'$'}i -lt ${'$'}commandAst.CommandElements.Count; ${'$'}i++) {
         |        ${'$'}e = ${'$'}commandAst.CommandElements[${'$'}i]
-        |        if (${'$'}e -is [StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
+        |        if (${'$'}e -is [System.Management.Automation.Language.StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [System.Management.Automation.Language.StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
         |            ${'$'}commandPath += ${'$'}e.Value
         |        }
         |    }
@@ -222,7 +222,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |    ${'$'}commandPath = @()
         |    for (${'$'}i = 1; ${'$'}i -lt ${'$'}commandAst.CommandElements.Count; ${'$'}i++) {
         |        ${'$'}e = ${'$'}commandAst.CommandElements[${'$'}i]
-        |        if (${'$'}e -is [StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
+        |        if (${'$'}e -is [System.Management.Automation.Language.StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [System.Management.Automation.Language.StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
         |            ${'$'}commandPath += ${'$'}e.Value
         |        }
         |    }
@@ -260,7 +260,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |    ${'$'}commandPath = @()
         |    for (${'$'}i = 1; ${'$'}i -lt ${'$'}commandAst.CommandElements.Count; ${'$'}i++) {
         |        ${'$'}e = ${'$'}commandAst.CommandElements[${'$'}i]
-        |        if (${'$'}e -is [StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
+        |        if (${'$'}e -is [System.Management.Automation.Language.StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [System.Management.Automation.Language.StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
         |            ${'$'}commandPath += ${'$'}e.Value
         |        }
         |    }
@@ -293,7 +293,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |    ${'$'}commandPath = @()
         |    for (${'$'}i = 1; ${'$'}i -lt ${'$'}commandAst.CommandElements.Count; ${'$'}i++) {
         |        ${'$'}e = ${'$'}commandAst.CommandElements[${'$'}i]
-        |        if (${'$'}e -is [StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
+        |        if (${'$'}e -is [System.Management.Automation.Language.StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [System.Management.Automation.Language.StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
         |            ${'$'}commandPath += ${'$'}e.Value
         |        }
         |    }
@@ -323,7 +323,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |    ${'$'}commandPath = @()
         |    for (${'$'}i = 1; ${'$'}i -lt ${'$'}commandAst.CommandElements.Count; ${'$'}i++) {
         |        ${'$'}e = ${'$'}commandAst.CommandElements[${'$'}i]
-        |        if (${'$'}e -is [StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
+        |        if (${'$'}e -is [System.Management.Automation.Language.StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [System.Management.Automation.Language.StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
         |            ${'$'}commandPath += ${'$'}e.Value
         |        }
         |    }
@@ -357,7 +357,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |    ${'$'}commandPath = @()
         |    for (${'$'}i = 1; ${'$'}i -lt ${'$'}commandAst.CommandElements.Count; ${'$'}i++) {
         |        ${'$'}e = ${'$'}commandAst.CommandElements[${'$'}i]
-        |        if (${'$'}e -is [StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
+        |        if (${'$'}e -is [System.Management.Automation.Language.StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [System.Management.Automation.Language.StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
         |            ${'$'}commandPath += ${'$'}e.Value
         |        }
         |    }
@@ -387,7 +387,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |    ${'$'}commandPath = @()
         |    for (${'$'}i = 1; ${'$'}i -lt ${'$'}commandAst.CommandElements.Count; ${'$'}i++) {
         |        ${'$'}e = ${'$'}commandAst.CommandElements[${'$'}i]
-        |        if (${'$'}e -is [StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
+        |        if (${'$'}e -is [System.Management.Automation.Language.StringConstantExpressionAst] -and ${'$'}e.StringConstantType -eq [System.Management.Automation.Language.StringConstantType]::BareWord -and -not ${'$'}e.Value.StartsWith('-')) {
         |            ${'$'}commandPath += ${'$'}e.Value
         |        }
         |    }

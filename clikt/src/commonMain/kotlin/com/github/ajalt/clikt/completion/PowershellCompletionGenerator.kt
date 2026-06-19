@@ -89,7 +89,7 @@ internal object PowershellCompletionGenerator {
                     appendLine("            [CompletionResult]::new('$name', '$name', [CompletionResultType]::ParameterName, '$help')")
                 }
             }
-            appendLine("        )")
+            appendLine("        ) | Where-Object { \$_.CompletionText -like \"\$wordToComplete*\" }")
             appendLine("    }")
             appendLine()
         }
@@ -169,7 +169,7 @@ internal object PowershellCompletionGenerator {
                     }
                 }
             }
-            appendLine("    )")
+            appendLine("    ) | Where-Object { \$_.CompletionText -like \"\$wordToComplete*\" }")
         }
 
         append("}")
@@ -197,7 +197,7 @@ internal object PowershellCompletionGenerator {
                 for (candidate in cc.candidates) {
                     appendLine("${i2}[CompletionResult]::new('${candidate.escSingleQuote}', '${candidate.escSingleQuote}', [CompletionResultType]::ParameterValue, '')")
                 }
-                appendLine("${indent})")
+                appendLine("${indent}) | Where-Object { \$_.CompletionText -like \"\$wordToComplete*\" }")
             }
             is CompletionCandidates.Custom -> {
                 val custom = cc.generator(ShellType.POWERSHELL)

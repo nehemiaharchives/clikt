@@ -33,7 +33,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |            [CompletionResult]::new('--host', '--host', [CompletionResultType]::ParameterName, '')
         |            [CompletionResult]::new('--user', '--user', [CompletionResultType]::ParameterName, '')
         |            [CompletionResult]::new('--fixed', '--fixed', [CompletionResultType]::ParameterName, '')
-        |        )
+        |        ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |    }
         |
         |# Complete option values: check last element (cursor at option name), then second-to-last (cursor at value)
@@ -60,7 +60,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |                return @(
         |                    [CompletionResult]::new('foo', 'foo', [CompletionResultType]::ParameterValue, '')
         |                    [CompletionResult]::new('bar', 'bar', [CompletionResultType]::ParameterValue, '')
-        |                )
+        |                ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |                return
         |            }
         |        }
@@ -87,7 +87,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |                    return @(
         |                        [CompletionResult]::new('foo', 'foo', [CompletionResultType]::ParameterValue, '')
         |                        [CompletionResult]::new('bar', 'bar', [CompletionResultType]::ParameterValue, '')
-        |                    )
+        |                    ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |                    return
         |                }
         |            }
@@ -99,7 +99,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |        Get-LocalUser -ErrorAction SilentlyContinue | Where-Object { ${'$'}_.Name -like "${'$'}wordToComplete*" } | ForEach-Object { [CompletionResult]::new(${'$'}_.Name, ${'$'}_.Name, [CompletionResultType]::ParameterValue, '') }
         |        [CompletionResult]::new('baz', 'baz', [CompletionResultType]::ParameterValue, '')
         |        [CompletionResult]::new('qux', 'qux', [CompletionResultType]::ParameterValue, '')
-        |    )
+        |    ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |}
         """
     }
@@ -133,7 +133,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |            [CompletionResult]::new('--o', '--o', [CompletionResultType]::ParameterName, '')
         |            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Show this message and exit')
         |            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Show this message and exit')
-        |        )
+        |        ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |    }
         |
         |# Complete option values: check last element (cursor at option name), then second-to-last (cursor at value)
@@ -163,7 +163,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |# Fallback: complete subcommand names or argument values
         |    return @(
         |        (echo zzz xxx) | ForEach-Object { [CompletionResult]::new(${'$'}_, ${'$'}_, [CompletionResultType]::ParameterValue, '') }
-        |    )
+        |    ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |}
         """
     }
@@ -196,13 +196,13 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |        return @(
         |            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Show this message and exit')
         |            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Show this message and exit')
-        |        )
+        |        ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |    }
         |
         |# Fallback: complete subcommand names or argument values
         |    return @(
         |        [CompletionResult]::new('foo bar', 'foo bar', [CompletionResultType]::ParameterValue, 'help')
-        |    )
+        |    ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |}
         """
     }
@@ -237,7 +237,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |            [CompletionResult]::new('--no-flag', '--no-flag', [CompletionResultType]::ParameterName, '')
         |            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Show this message and exit')
         |            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Show this message and exit')
-        |        )
+        |        ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |    }
         |
         |# Fallback: complete subcommand names or argument values
@@ -273,14 +273,14 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |        return @(
         |            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Show this message and exit')
         |            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Show this message and exit')
-        |        )
+        |        ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |    }
         |
         |# Fallback: complete subcommand names or argument values
         |    return @(
         |        [CompletionResult]::new('sub', 'sub', [CompletionResultType]::ParameterValue, '')
         |        [CompletionResult]::new('sub-command', 'sub-command', [CompletionResultType]::ParameterValue, '')
-        |    )
+        |    ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |}
         |
         |# Register-ArgumentCompleter: https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/register-argumentcompleter
@@ -307,7 +307,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |        return @(
         |            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Show this message and exit')
         |            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Show this message and exit')
-        |        )
+        |        ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |    }
         |
         |# Fallback: complete subcommand names or argument values
@@ -337,14 +337,14 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |        return @(
         |            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Show this message and exit')
         |            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Show this message and exit')
-        |        )
+        |        ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |    }
         |
         |# Fallback: complete subcommand names or argument values
         |    return @(
         |        [CompletionResult]::new('sub-sub', 'sub-sub', [CompletionResultType]::ParameterValue, '')
         |        [CompletionResult]::new('long-sub-command', 'long-sub-command', [CompletionResultType]::ParameterValue, '')
-        |    )
+        |    ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |}
         |
         |# Register-ArgumentCompleter: https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/register-argumentcompleter
@@ -371,7 +371,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |        return @(
         |            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Show this message and exit')
         |            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Show this message and exit')
-        |        )
+        |        ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |    }
         |
         |# Fallback: complete subcommand names or argument values
@@ -401,7 +401,7 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
         |        return @(
         |            [CompletionResult]::new('-h', '-h', [CompletionResultType]::ParameterName, 'Show this message and exit')
         |            [CompletionResult]::new('--help', '--help', [CompletionResultType]::ParameterName, 'Show this message and exit')
-        |        )
+        |        ) | Where-Object { ${'$'}_.CompletionText -like "${'$'}wordToComplete*" }
         |    }
         |
         |# Fallback: complete subcommand names or argument values
@@ -410,4 +410,3 @@ class PowershellCompletionTest : CompletionTestBase("powershell") {
     }
 
 }
-
